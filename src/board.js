@@ -35,6 +35,9 @@ Board.DIRS = [
  * Checks if a given position is on the Board.
  */
 Board.prototype.isValidPos = function (pos) {
+  if (pos[0] < 0 || pos[1] < 0) return false;
+  if (pos[0] > 7 || pos[1] > 7) return false;
+  return true;
 };
 
 /**

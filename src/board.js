@@ -90,7 +90,7 @@ Board.prototype.isOccupied = function (pos) {
  */
 Board.prototype._positionsToFlip = function(pos, color, dir, piecesToFlip){
   if (!this.isValidPos(pos)) { return []; }
-  piecesToFlip ||= [];
+  if (!piecesToFlip) { piecesToFlip = []; };
 
   let new_pos = [pos[0] + dir[0], pos[1] + dir[1]];
   if(!this.isValidPos(new_pos) || !this.isOccupied(new_pos)) { return []; }
@@ -178,6 +178,13 @@ Board.prototype.isOver = function () {
  * Prints a string representation of the Board to the console.
  */
 Board.prototype.print = function () {
+  for (let row = 0; row < 8; row++) {
+    let rowPieces = [];
+    for (let col = 0; col < 8; col++) {
+      rowPieces.push(this.getPiece([row, col]).color);
+    }
+    console.log(rowPieces.join(" "));
+  }
 };
 
 

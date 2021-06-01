@@ -158,7 +158,7 @@ Board.prototype.validMoves = function (color) {
  * Checks if there are any valid moves for the given color.
  */
 Board.prototype.hasMove = function (color) {
-  return (this.validMoves(color).length === 0 ? false : true)
+  return (this.validMoves(color).length === 0 ? false : true);
 };
 
 
@@ -168,6 +168,7 @@ Board.prototype.hasMove = function (color) {
  * the black player are out of moves.
  */
 Board.prototype.isOver = function () {
+  return (this.hasMove('white') || this.hasMove('black') ? false : true);
 };
 
 

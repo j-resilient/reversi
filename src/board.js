@@ -178,12 +178,22 @@ Board.prototype.isOver = function () {
  * Prints a string representation of the Board to the console.
  */
 Board.prototype.print = function () {
+  let columns = "";
+  for (let i = 0; i < 8; i++) {
+    for (let j = 0; j < 5; j++) { columns += " " }
+    columns += i;
+  }
+  console.log(columns);
   for (let row = 0; row < 8; row++) {
     let rowPieces = [];
     for (let col = 0; col < 8; col++) {
-      rowPieces.push(this.getPiece([row, col]).color);
+      if (this.isOccupied([row, col])) {
+        rowPieces.push(this.getPiece([row, col]).color);
+      } else {
+        rowPieces.push("[   ]");
+      }
     }
-    console.log(rowPieces.join(" "));
+    console.log(row + "  " + rowPieces.join(" "));
   }
 };
 
